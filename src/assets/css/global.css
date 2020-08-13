@@ -1,0 +1,45 @@
+html, body, #app{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.el-main, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+.item_left{
+    float: left;
+}
+.item_right {
+    float: right;
+}
+.text_left {
+    text-align: left;
+}
+.text_center {
+    text-align: center;
+}
+.text_right {
+    text-align: right;
+}
+.el-card {
+    border-radius: 0;
+}
+.cursor {
+    cursor: default;
+}
+.submit_btn {
+    width: 100%;
+}
+
+.center_menu {
+    height: 30px;
+    background-color: #B22222;
+    color: #fff;
+    padding: 0 100px;
+    z-index: 11;
+}
+.center_menu .el-col {
+    text-align: center;
+    line-height: 30px;
+}
