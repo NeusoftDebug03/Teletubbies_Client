@@ -12,8 +12,8 @@
         <el-row class="add_border">详述：{{detail.productLangs}}</el-row>
         <el-row class="add_border" v-if="detail.productExtraInfo===null">其他信息：暂无信息</el-row>
         <el-row class="add_border" v-else>其他信息：{{detail.productExtraInfo}}</el-row>
-        <el-row class="add_background">价格：<span class="origin_price">{{detail.productPrice}}</span><span
-          class="real_price">{{detail.productPrice*detail.productDiscount}}</span></el-row>
+        <el-row class="add_background">价格：<span class="origin_price">{{detail.productPrice}}</span>
+          <span class="real_price">{{Math.floor(detail.productPrice*detail.productDiscount*100)/100}}</span></el-row>
         <el-row>数量:
           <el-input-number v-model="count" :min="1" :max="detail.productStock" label="数量" size="mini"></el-input-number>
           库存：{{detail.productStock}}
