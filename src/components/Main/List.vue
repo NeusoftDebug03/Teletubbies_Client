@@ -75,11 +75,11 @@ export default {
     return {
       queryInfo: {
         currentPage: 1,
-        pageSize: 16
+        pageSize: 8
       },
       queryInfo2: {
         currentPage: 1,
-        pageSize: 16,
+        pageSize: 8,
         condition: {
           productClass: ''
         }
