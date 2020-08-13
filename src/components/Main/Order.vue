@@ -81,6 +81,7 @@ export default {
       this.detail.productStock -= this.count
       const balance = sessionStorage.getItem('balance')
       sessionStorage.setItem('balance', balance - res.data.cost)
+      location.reload()
       console.log(this.detail)
     }
   }
