@@ -147,6 +147,7 @@ export default {
     },
     handleCurrentChange (newPage) {
       this.queryInfo.pageNum = newPage
+      this.queryInfo.currentPage = newPage
       this.getProductList()
     },
     toOrder (productId) {
