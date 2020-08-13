@@ -12,8 +12,12 @@
         <el-row class="add_border">详述：{{detail.productLangs}}</el-row>
         <el-row class="add_border" v-if="detail.productExtraInfo===null">其他信息：暂无信息</el-row>
         <el-row class="add_border" v-else>其他信息：{{detail.productExtraInfo}}</el-row>
-        <el-row class="add_background">价格：<span class="origin_price">{{detail.productPrice}}</span><span class="real_price">{{detail.productPrice*detail.productDiscount}}</span></el-row>
-        <el-row>数量: <el-input-number v-model="count" :min="1" :max="detail.productStock" label="数量" size="mini"></el-input-number> 库存：{{detail.productStock}}</el-row>
+        <el-row class="add_background">价格：<span class="origin_price">{{detail.productPrice}}</span><span
+          class="real_price">{{detail.productPrice*detail.productDiscount}}</span></el-row>
+        <el-row>数量:
+          <el-input-number v-model="count" :min="1" :max="detail.productStock" label="数量" size="mini"></el-input-number>
+          库存：{{detail.productStock}}
+        </el-row>
         <el-row>
           <el-button type="danger" @click="setBuy()">立即购买</el-button>
           <el-button type="danger">加入购物车</el-button>
@@ -37,6 +41,7 @@ export default {
   created () {
     if (this.$route.params.productId) sessionStorage.setItem('orderedProductId', this.$route.params.productId)
     this.productId = sessionStorage.getItem('orderedProductId')
+    this.userId = sessionStorage.getItem('userId')
     this.getProductDetail()
   },
   methods: {
@@ -44,7 +49,7 @@ export default {
       this.$router.push({ name: 'Home', params: {} })
     },
     async getProductDetail () {
-      console.log(this.productId)
+      // console.log(this.productId)
       const { data: res } = await this.$http.post('get_product_detail', {
         productId: this.productId
       })
@@ -53,12 +58,14 @@ export default {
       }
       this.detail = res.data.product
       this.detail.imgUrl = res.data.imgUrls[0]
-      console.log(this.detail)
+      // console.log(this.detail)
     },
     toList (productClass = null) {
       this.$router.push({ name: 'List', params: { productClass: productClass } })
     },
     async setBuy () {
+      console.log(this.productId)
+
       const { data: res } = await this.$http.post('create_order', {
         userId: parseInt(this.userId),
         contents: [
@@ -74,6 +81,7 @@ export default {
       this.detail.productStock -= this.count
       const balance = sessionStorage.getItem('balance')
       sessionStorage.setItem('balance', balance - res.data.cost)
+      console.log(this.detail)
     }
   }
 }
