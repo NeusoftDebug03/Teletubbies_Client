@@ -47,7 +47,7 @@
               <el-col class="text_center" :span="24" v-if="orders.length === 0" style="margin-top: 10px;">暂无订单~</el-col>
             </el-row>
             <el-row style="border-bottom: 2px solid #F5F5F5" v-for="item in orders" :key="item.orderId">
-              <el-col class="text_center" :span="6">{{item.num}}</el-col>
+              <el-col class="text_center" :span="6">{{item.orderId}}</el-col>
               <el-col class="text_center" :span="6">{{item.contentId}}</el-col>
               <el-col class="text_center" :span="6">{{item.statusId}}</el-col>
               <el-col class="text_center" :span="6">{{item.cost}}</el-col>
@@ -107,7 +107,7 @@ export default {
         passwd: ''
       },
       balance: null,
-      status: ['已下单', '取消订单', '已接单', '配送中', '已收货'],
+      status: ['', '已下单', '取消订单', '已接单', '配送中', '已收货'],
       operatingArea: [], // 选择的地区
       operatingAreaTrue: [], // 地区数据
       adressDetail: '', // 详细地址
@@ -703,9 +703,10 @@ export default {
         return this.$message.error('获取订单信息失败！')
       }
       this.orders = res.data.items
-      const i = 1
+      // const i = 0
       this.orders.forEach((item) => {
-        item.num = i
+        // item.num = i
+        // item.num = this.orders[item.orderId]
         item.statusId = that.status[item.statusId]
       })
     },

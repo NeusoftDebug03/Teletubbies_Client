@@ -16,7 +16,8 @@
     <div style="padding-bottom: 60px">
       <el-row class="search_container">
         <el-col :span="8">
-          <img src="https://i.loli.net/2020/04/28/vOH2VemzBRGE61T.png" alt="" width="180" height="140" style="float: left;">
+<!--          <img src="https://i.loli.net/2020/04/28/vOH2VemzBRGE61T.png" alt="" width="180" height="140" style="float: left;">-->
+          <img src="../../../public/logo.png" alt="" width="140" height="140" style="float: left;">
         </el-col>
         <el-col :span="16" class="search_box">
           <el-row>
